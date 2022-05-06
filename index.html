@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="./assets/codemirror.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="./assets/codemirror.min.js"></script>
+    <script type="text/javascript" src="./assets/javascript.min.js"></script>
+    <script type="text/javascript" src="./assets/css.min.js"></script>
+    <script type="text/javascript" src="./assets/xml.min.js"></script>
+    <script type="text/javascript" src="./assets/27b9267cdf.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./assets/beautify.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Generator</title>
+</head>
+
+<body>
+   
+    <div id="container">
+        <img id="logo" src="./assets/logo.png" />
+        <div id="assets">
+            <button><i class="fa fa-book"></i></button>
+            Documentação JavaScript
+        </div>
+        <div>Tipo de tecnologia: <span id="tech"></span></div><br>
+
+        <label for="eventcapture">
+            Capturar Elemento:
+            <select id="eventcapture" enabled>
+                <option value="">Selecione</option>
+                <option value="Desativado">Desativado</option>
+                <option value="Ativado">Ativado</option>
+            </select>
+        </label>
+        <br>
+
+        <div id="tabs">
+            <button class="tabBtn active" id="adsConversionCodeTab">Ads Conversion Code</button>
+            <button class="tabBtn" id="analyticsEventTab">Analytics Event</button>
+            <button class="tabBtn" id="dataLayerTab">DataLayer push</button>
+        </div>
+
+        <form id="formAdsConversionCode">
+            <div class="formOptionsDiv">
+                <fieldset class="codeConfigs">
+                    <legend>Configurações de Código</legend>
+                    <label for="enableEvent">
+                        Habilitar eventos:
+                        <input type="checkbox" value="enableEvent" id="enableEvent" />
+                    </label>
+        
+                    <label for="enableUrlFilter">
+                        Habilitar Filtro de URL:
+                        <input type="checkbox" value="enableUrlFilter" id="enableUrlFilter" />
+                    </label>
+        
+                    <label for="enableElementArray">
+                        Mais de um elemento selecionado (Array):
+                        <input type="checkbox" value="enableElementArray" id="enableElementArray" />
+                    </label>
+    
+                    <label for="enableDomContentLoaded">
+                        Aguardar o DOM carregar:
+                        <input type="checkbox" value="enableDomContentLoaded" id="enableDomContentLoaded" />
+                    </label>
+                </fieldset>
+    
+                <fieldset id="conversionConfigs">
+                    <legend>Configurações de conversão</legend>
+                    <label for="typeConversion">
+                        Tipo de conversão:
+                        <select id="typeConversion">
+                            <option value="normal" selected>Conversão Normal</option>
+                            <option value="purchase">Conversão de Compra</option>
+                        </select>
+                    </label>
+
+                    <label for="conversionId">
+                        Insira o conversion ID:
+                        <input type="text" name="conversionId" id="conversionId" placeholder="Insira o conversion id" />
+                    </label>
+
+                    <label for="conversionLabel">
+                        Insira o conversion label (rótulo):
+                        <input type="text" name="conversionLabel" id="conversionLabel" placeholder="Insira o conversion label" />
+                    </label>
+
+                    <label for="priceSelector">
+                        Insira o nome do seletor CSS do preço:
+                        <input type="text" disabled name="priceSelector" id="priceSelector" placeholder="Insira o seletor aqui" />
+                    </label>
+
+                    <label for="orderSelector">
+                        Insira o nome do seletor CSS do Order ID:
+                        <input type="text" disabled name="orderSelector" id="orderSelector" placeholder="Insira o seletor aqui" />
+                    </label>
+
+                    <label for="currencyType">
+                        Insira o tipo da moeda (currency):
+                        <select disabled id="currencyType">
+                            <option value="BRL" selected>BRL (Real)</option>
+                            <option value="USD">USD (Dólar)</option>
+                        </select>
+                    </label>
+                </fieldset>
+            </div>
+    
+    
+            <label for="selectorCss">
+                Insira o nome do seletor CSS do elemento (Class ou ID):
+                <input type="text" disabled name="selectorCss" id="selectorCss" placeholder="Insira o seletor aqui" />
+            </label>
+    
+            <label for="eventType">
+                Insira o tipo de evento DOM (click, submit, etc...):
+                <select id="eventType" disabled>
+                    <option value="click">Click</option>
+                    <option value="submit">Submit</option>
+                </select>
+            </label>
+    
+            <label for="urlType">
+                Filtro de URL:
+    
+                <div class="urlFilter">URL
+                    <select id="urlType" disabled>
+                        <option value="includes">Contém</option>
+                        <option value="equals">Igual a</option>
+                    </select>
+    
+                    <input type="text" id="urlText" name="urlText" placeholder="Insira o filtro aqui" disabled />
+                </div>
+            </label>
+    
+            <button type="submit">Gerar código <i class="fa fa-code"></i></button>
+        </form>
+
+        <form id="formAnalyticsEvent">
+            <div class="formOptionsDiv">
+                <fieldset class="codeConfigs">
+                    <legend>Configurações de Código</legend>
+                    <label for="enableEvent">
+                        Habilitar eventos:
+                        <input type="checkbox" value="enableEvent" id="enableEvent" />
+                    </label>
+        
+                    <label for="enableUrlFilter">
+                        Habilitar Filtro de URL:
+                        <input type="checkbox" value="enableUrlFilter" id="enableUrlFilter" />
+                    </label>
+        
+                    <label for="enableElementArray">
+                        Mais de um elemento selecionado (Array):
+                        <input type="checkbox" value="enableElementArray" id="enableElementArray" />
+                    </label>
+    
+                    <label for="enableDomContentLoaded">
+                        Aguardar o DOM carregar:
+                        <input type="checkbox" value="enableDomContentLoaded" id="enableDomContentLoaded" />
+                    </label>
+                </fieldset>
+
+                <fieldset id="eventConfigs">
+                    <legend>Configurações de evento</legend>
+
+                    <label for="eventName">
+                        Insira o nome do evento:
+                        <input type="text" name="eventName" id="eventName" placeholder="Insira o nome do evento" />
+                    </label>
+
+                    <div class="eventParameters">
+                        <button type="button" name="addParameter" id="addParameter">Adicionar parâmetro</button>
+
+                        <div class="parametersDiv"></div>
+                    </div>
+                </fieldset>
+            </div>
+            
+    
+    
+            <label for="selectorCss">
+                Insira o nome do seletor CSS do elemento (Class ou ID):
+                <input type="text" disabled name="selectorCss" id="selectorCss" placeholder="Insira o seletor aqui" />
+            </label>
+    
+            <label for="eventType">
+                Insira o tipo de evento DOM (click, submit, etc...):
+                <select id="eventType" disabled>
+                    <option value="click">Click</option>
+                    <option value="submit">Submit</option>
+                </select>
+            </label>
+    
+            <label for="urlType">
+                Filtro de URL:
+    
+                <div class="urlFilter">URL
+                    <select id="urlType" disabled>
+                        <option value="includes">Contém</option>
+                        <option value="equals">Igual a</option>
+                    </select>
+    
+                    <input type="text" id="urlText" name="urlText" placeholder="Insira o filtro aqui" disabled />
+                </div>
+            </label>
+    
+            <button type="submit">Gerar código <i class="fa fa-code"></i></button>
+        </form>
+
+        <form id="formDataLayer">
+            <div class="formOptionsDiv">
+                <fieldset class="codeConfigs">
+                    <legend>Configurações de Código</legend>
+                    <label for="enableEvent">
+                        Habilitar eventos:
+                        <input type="checkbox" value="enableEvent" id="enableEvent" />
+                    </label>
+        
+                    <label for="enableUrlFilter">
+                        Habilitar Filtro de URL:
+                        <input type="checkbox" value="enableUrlFilter" id="enableUrlFilter" />
+                    </label>
+        
+                    <label for="enableElementArray">
+                        Mais de um elemento selecionado (Array):
+                        <input type="checkbox" value="enableElementArray" id="enableElementArray" />
+                    </label>
+    
+                    <label for="enableDomContentLoaded">
+                        Aguardar o DOM carregar:
+                        <input type="checkbox" value="enableDomContentLoaded" id="enableDomContentLoaded" />
+                    </label>
+                </fieldset>
+
+                <fieldset id="dataLayerConfigs">
+                    <legend>Configurações de datalayer</legend>
+
+                    <div class="dataLayerObj">
+                        <button type="button" name="addKeyValue" id="addKeyValue">Adicionar chave/valor</button>
+
+                        <div class="objDiv"></div>
+                    </div>
+                </fieldset>
+            </div>
+            
+    
+    
+            <label for="selectorCss">
+                Insira o nome do seletor CSS do elemento (Class ou ID):
+                <input type="text" disabled name="selectorCss" id="selectorCss" placeholder="Insira o seletor aqui" />
+            </label>
+    
+            <label for="eventType">
+                Insira o tipo de evento DOM (click, submit, etc...):
+                <select id="eventType" disabled>
+                    <option value="click">Click</option>
+                    <option value="submit">Submit</option>
+                </select>
+            </label>
+    
+            <label for="urlType">
+                Filtro de URL:
+    
+                <div class="urlFilter">URL
+                    <select id="urlType" disabled>
+                        <option value="includes">Contém</option>
+                        <option value="equals">Igual a</option>
+                    </select>
+    
+                    <input type="text" id="urlText" name="urlText" placeholder="Insira o filtro aqui" disabled />
+                </div>
+            </label>
+    
+            <button type="submit">Gerar código <i class="fa fa-code"></i></button>
+        </form>
+    
+    </div>
+
+    <div class="popup">
+        <div class="codeArea">
+            <button id="copyCodeToClipboard"><i class="fa fa-copy"></i></button>
+            <div id="root"></div>
+        </div>
+        <button id="debuggerCode"><i class="fa fa-play"></i></button>
+        <button id="back"><i class="fa fa-backward"></i></button> 
+    </div>
+
+    <div class="popupDocumentation">
+        <div class="docArea">
+            <div class="separationDoc">
+                <h3>Seletores CSS</h3>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Document/querySelector" target="_blank">QuerySelector (DOM)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Document/querySelectorAll" target="_blank">QuerySelectorAll (DOM)</a>
+            </div>
+
+            <div class="separationDoc">
+                <h3>Filtro de URL</h3>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Window" target="_blank">Objeto Window (Navegador)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Window/location" target="_blank">Window Location (Navegador)</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/href" target="_blank">Window Location Href (Navegador)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/includes" target="_blank">Método Includes (JavaScript)</a>
+            </div>
+
+            <div class="separationDoc">
+                <h3>Eventos</h3>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/addEventListener" target="_blank">Método AddEventListener (Javascript)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Window/DOMContentLoaded_event" target="_blank">Evento DOMContentLoaded (DOM)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Element/click_event" target="_blank">Evento Click (DOM)</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event" target="_blank">Evento Form Submit (HTMLElement)</a>
+            </div>
+
+            <div class="separationDoc">
+                <h3>Outros</h3>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">Método forEach (JS Array)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/if...else" target="_blank">if...else (JavaScript)</a>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions" target="_blank">Funções (JavaScript)</a>
+            </div>
+        </div>
+
+        <button id="back"><i class="fa fa-backward"></i></button> 
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

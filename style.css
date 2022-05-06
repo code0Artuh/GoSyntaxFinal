@@ -1,0 +1,361 @@
+body {
+    margin: 0 auto;
+    font-family: sans-serif;
+    background-image: linear-gradient(to bottom right, #4affde 0%, #5b9dff 40%, #d06bff 60%, #ff34d2 100%);
+    background-size: 250% 250%;
+    animation: movingGradient 2s linear infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 700px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+@keyframes movingGradient {
+    from {background-position: 0 0;}
+    to {background-position: 100% 100%; }
+}
+
+div#container {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    position: relative;
+    -webkit-box-shadow: 1px 2px 13px 6px rgba(0,0,0,0.39); 
+    box-shadow: 1px 2px 13px 6px rgba(0,0,0,0.39);  
+    border: 2px solid #eee;
+    border-radius: 10px;
+}
+
+img#logo {
+    height: 120px;
+}
+
+div#assets {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 13px;
+}
+
+div#assets button {
+    font-size: 20px;
+    padding: 10px;
+    background: #27a0e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+div#assets button:hover {
+    background: #026aa6;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px 12px 25px 12px;
+    font-size: 12px;
+    width: 90%;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+fieldset.codeConfigs input {
+    width: inherit;
+}
+
+fieldset#conversionConfigs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+fieldset#conversionConfigs input {
+    width: inherit;
+}
+
+input, select {
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid green;
+    width: 200px;
+}
+
+input:disabled, select:disabled {
+    border-bottom: 2px solid red;
+    background: #d9d9d9;
+}
+
+label {
+    margin-top: 10px;
+}
+
+div.urlFilter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+button[type="submit"] {
+    border: none;
+    background: #27a0e6;
+    padding: 12px;
+    cursor: pointer;
+    color: #eeeeee;
+    transition: all 0.5s;
+    margin: 10px 0px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background: #026aa6;
+
+}
+
+div.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #121212c1;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    visibility: hidden;
+    top: 0;
+}
+
+div.popup button#back {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #eeeeee;
+    font-weight: bold;
+}
+
+
+div.popup button#back:hover {
+    color: #ec2f2f;
+    transition: .4s ease-in-out;
+}
+
+div.popup button#debuggerCode{
+    position: absolute;
+    right: 55px;
+    top: 15px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #eeeeee;
+    font-weight: bold;
+}
+
+div.popup button#debuggerCode:hover {
+    color: blue;
+    transition: .4s ease-in-out;
+
+}
+
+
+div#root {
+    font-size: 13px;
+    width: 100%;
+}
+
+
+
+div.codeArea {
+    border: 2px solid #026aa6;
+    position: absolute;
+    width: 90%;
+    top: 20%;
+}
+
+div.codeArea button {
+    position: absolute;
+    right: 5px;
+    bottom: 25px;
+    z-index: 1;
+    font-size: 15px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: #202020;
+}
+
+div.docArea button:hover {
+    color: #026aa6;
+}
+
+
+div.popupDocumentation {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #121212c1;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    visibility: hidden;
+    top: 0;
+}
+
+div.popupDocumentation button#back {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #eeeeee;
+    font-weight: bold;
+}
+
+
+div.popupDocumentation button#back:hover {
+    color: #ec2f2f;
+}
+
+
+div.docArea {
+    border: 2px solid #026aa6;
+    position: absolute;
+    width: 80%;
+    top: 20%;
+    background: #ffffff;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+div.docArea div.separationDoc {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+div#tabs {
+    width: 90%;
+    display: flex;
+    background: #eee;
+    border-radius: 20px;
+}
+
+div#tabs button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    
+}
+
+div#tabs button.tabBtn.active {
+    background: #5b9dff;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid #d06bff;
+}
+
+span#tech {
+    font-weight: bold;
+}
+
+form#formAnalyticsEvent, form#formDataLayer {
+    display: none;
+}
+
+form div.formOptionsDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+form div.formOptionsDiv fieldset {
+    width: 50%;
+}
+
+form#formAnalyticsEvent fieldset#eventConfigs div.eventParameters,
+form#formAnalyticsEvent fieldset#dataLayerConfigs div.dataLayerObj  {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
+}
+
+
+/* form#formAnalyticsEvent fieldset#eventConfigs div.eventParameters div.parametersDiv,
+form#formAnalyticsEvent fieldset#dataLayerConfigs div.dataLayerObj div.objDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} */
+
+button#addParameter, 
+button#addKeyValue {
+    margin: 5px 0px;
+    width: 100%;
+}
+
+div.parametersDiv, 
+div.objDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 180px;
+    border: 1px solid black;
+    font-size: 9px;
+}
+
+span.parametersLine, 
+span.keyValueLine {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 5px;
+    align-items: end;
+}
+
+span.parametersLine button, 
+span.keyValueLine button {
+    height: 28px;
+    cursor: pointer;
+}
+
+span.parametersLine label, 
+span.keyValueLine label {
+    width: 35%;
+    margin-top: 0;
+}
+
+span.parametersLine label input, 
+span.keyValueLine label input {
+    width: 100%;
+    border: 1px solid #121212;
+    margin-top: 5px;
+}

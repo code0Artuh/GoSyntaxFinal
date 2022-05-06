@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "version": "1.0.0",
+    "name": "Syntax Generator",
+    "description": "Cognizant",
+    "author": "Lucas",
+    "browser_action": {
+   	 "default_title": "Syntax Generator",
+   	 "default_popup": "index.html",
+     "default_icon": "icon.png"
+    },
+    "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+     "128": "icon128.png"
+   },
+   "permissions": ["*://*/*"],
+   "background": {
+    "scripts": ["background.js"]
+   },
+   "web_accessible_resources": [
+    "popup.html"
+  ],
+   "content_scripts": [{
+     "matches": ["http://*/*", "https://*/*"],
+     "js": ["myScript.js"]
+   }]
+}
